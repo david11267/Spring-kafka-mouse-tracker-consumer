@@ -3,13 +3,10 @@ package salt.david.kafkaMousePosProducer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/mousePosition")
 public class MousePosController {
@@ -26,6 +23,7 @@ public class MousePosController {
     public void postMousePos(@RequestBody TrackingData mouseLog) throws JsonProcessingException {
         // do other stuff
         final String json = mapper.writeValueAsString(mouseLog);
+        System.out.println("kafka in mouseLog: "+ mouseLog);
         template.send("mousePositionLog", mouseLog.userId, json);
     }
 
