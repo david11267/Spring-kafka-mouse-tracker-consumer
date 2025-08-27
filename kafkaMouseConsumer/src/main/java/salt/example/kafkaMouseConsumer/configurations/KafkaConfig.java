@@ -18,9 +18,9 @@ public class KafkaConfig {
         this.mapper = new ObjectMapper();
         //consider saving data somewhere
     }
-    @KafkaListener(id = "myId", topics = "payments")
+    @KafkaListener(id = "myId", topics = "mousePosLogs")
     public void listen(ConsumerRecord<String, String> record) {
-        System.out.println("Kafka listener started");
+        System.out.println("Hello from Kafka listener!");
         // injecting ConsumerRecord in case we need message metadata
         // otherwise can just inject a String
         String value = record.value();
