@@ -1,7 +1,9 @@
-spring.application.name=kafkaMousePosConsumer
-
-server.port=8081
-
-spring.kafka.consumer.auto-offset-reset=earliest
-
-
+spring:
+  application:
+   name: kafkaMousePosConsumer
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092
+server:
+  port: 8081
